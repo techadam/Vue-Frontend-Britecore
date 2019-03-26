@@ -1,0 +1,114 @@
+body {
+    font-family: Trebuchet MS, sans-serif !important;
+    background: #F8F9FA;
+}
+
+.risks-row {
+   margin-top: 50px;
+}
+
+.risk-head {
+   font-size: 20px;
+}
+
+/*=========Custom Modal popup=========*/
+
+.popup-overlay {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    z-index: 1055;
+}
+
+.popup-overlay.popup-close {
+   display: none !important;
+}
+
+.popup-content {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    transition: 200ms;
+}
+
+.popup-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}
+
+.popup-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.popup-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+    border-bottom-right-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}
+
+.w-40 {
+   width: 40% !important;
+}
+
+/*=========Notification CSS Rules === */
+
+.ajs-message.ajs-custom {
+    color: #fff !important;
+    background-color: #0D47A1 !important;
+    border-color: #0D47A1 !important;
+    font-size: 15px;
+}
+
+.ajs-message.ajs-success {
+    color: #fff !important;
+    background-color: #29A744 !important;
+    border-color: #29A744 !important;
+    font-size: 15px;
+}
+
+.ajs-message.ajs-error {
+    color: #fff !important;
+    background-color: rgb(175, 15, 15) !important;
+    border-color: rgb(175, 15, 15) !important;
+    font-size: 15px;
+}
+
+.ajs-message.ajs-warning {
+    color: #fff !important;
+    background-color: #FFC107 !important;
+    border-color: #FFC107 !important;
+    font-size: 15px;
+}
+
+/* ========Notification CSS Rules ======*/
