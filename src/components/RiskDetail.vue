@@ -82,9 +82,13 @@
          * Fetch the data of the current selected risk type
          */
          getRiskType(id) {
+            //NP loader
+            NProgress.start();
+            //Get Request
             axios.get(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
             .then(res => {
-               this.risk = res.data
+               this.risk = res.data;
+               NProgress.done();
             })
             .catch(error => console.log(error))
          },
@@ -106,6 +110,9 @@
          * Remove risk field
          */
          removeField(fieldId) {
+            //NP loader
+            NProgress.start();
+            //Delete Request
             axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
             .then(res => {
                this.$store.dispatch('REMOVE_FIELD', res.data);

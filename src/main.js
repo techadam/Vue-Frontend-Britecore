@@ -20,11 +20,25 @@ const router = new VueRouter({
    mode: 'history',
    base: __dirname,
    routes: [
-      {path: '/', component: Risks},
+      {path: '/', name:'risks', component: Risks},
       {path: '/risk/:id', name:'riskdetail', component: RiskDetail},
       {path: '/risk/:id/form', name: 'riskform', component: RiskForm},
-      {path: '/about', component: About},
+      {path: '/about', name:'about',  component: About},
    ]
+})
+
+router.beforeResolve((to, from, next) => {
+  // If this isn't an initial page load.
+  if (to.name) {
+      // Start the route progress bar.
+      NProgress.start()
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+  // Complete the animation of the route progress bar.
+  NProgress.done()
 })
 
 new Vue({

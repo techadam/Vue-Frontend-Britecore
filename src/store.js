@@ -61,13 +61,17 @@ export const store = new Vuex.Store({
    },
    actions: {
          GET_RISK : async (context, payload) => {
+            NProgress.start();
             await axios.get(`${url}/api/risks/`).then(res => {
                   context.commit('SET_RISK', res.data);
+                  NProgress.done();
                }).catch(error => (console.log(error)))
          },
         GET_RISK_FIELDS : async (context, payload) => {
+           NProgress.start();
            await axios.get(`${url}/api/risk_fields/`).then(res => {
               context.commit('SET_RISK_FIELDS', res.data);
+              NProgress.done();
            }).catch(error => (console.log(error)))
        },
        UPDATE_RISK: (context, payload) => {
@@ -80,8 +84,10 @@ export const store = new Vuex.Store({
           context.commit('UPDATE_FIELD', payload)
        },
        GET_FIELD_TYPES : async (context, payload) => {
+          NProgress.start();
           await axios.get(`${url}/api/field_types/`).then(res => {
              context.commit('SET_FIELD_TYPES', res.data);
+             NProgress.done();
           }).catch(error => (console.log(error)))
        },
        SAVE_RISK: (context, payload) => {

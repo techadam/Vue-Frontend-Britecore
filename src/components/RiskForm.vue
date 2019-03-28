@@ -71,10 +71,14 @@
          * Remove risk field
          */
          removeField(fieldId) {
+            //NP loader
+            NProgress.start();
+            //Delete Request
             axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
             .then(res => {
                this.$store.dispatch('REMOVE_FIELD', res.data);
                this.$alertify.success('Field  removed successfully');
+               NProgress.done();
             })
             .catch(error => (console.log(error)))
          },

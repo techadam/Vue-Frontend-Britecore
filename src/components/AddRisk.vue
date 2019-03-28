@@ -45,6 +45,9 @@ export default {
          e.preventDefault();
 
          if(this.risk_name !== '') {
+            //NP Loader
+            NProgress.start();
+            //Post Request
             axios.post('https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/', {risk_name: this.risk_name})
             .then(res => {
                if(res.data.id) {
@@ -52,6 +55,7 @@ export default {
                   this.$store.dispatch('SAVE_RISK', res.data);
                   this.risk_name = '';
                   this.$alertify.success('Risk type name added successfully');
+                  NProgress.done();
                }else{
                   this.$alertify.error('Invalid Request. Please try again');
                }

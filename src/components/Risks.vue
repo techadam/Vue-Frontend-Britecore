@@ -59,10 +59,14 @@
          },
          deleteRisk(riskId) {
             if(!isNaN(riskId)) {
+               //NP Loader
+               NProgress.start();
+               //Delete Request
                axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${riskId}`)
                .then(res => {
                   this.$alertify.success('Risk type successfully deleted');
                   this.$store.dispatch('DELETE_RISK', res.data);
+                  NProgress.done();
                })
                .catch(error => (console.log(error)))
             }

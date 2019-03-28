@@ -102,11 +102,14 @@
             }
 
             if(flag !== false) {
+               //NP Loader
+               NProgress.start();
                //Save form
                axios.post('https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/', data)
                .then(res => {
                   this.$store.dispatch('SAVE_FIELD', data);
                   this.$alertify.success('Risk field added successfully');
+                  NProgress.done();
 
                   //Clear Form field
                   this.options = false;

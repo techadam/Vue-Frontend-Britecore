@@ -48,6 +48,9 @@ export default {
          e.preventDefault();
 
          if(this.risk_name !== '') {
+            //NP Loader
+            NProgress.start();
+            //Put Request
             axios.put(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${this.risk.id}/`, this.risk)
             .then(res => {
                if(res.data.id) {
@@ -55,6 +58,7 @@ export default {
                   this.$store.dispatch('UPDATE_RISK', res.data);
                   this.$emit('fetchRisks');
                   this.$alertify.success('Risk type name updated successfully');
+                  NProgress.done();
                }else{
                   this.$alertify.error('Invalid Request. Please try again');
                }

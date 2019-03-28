@@ -100,11 +100,14 @@
             }
 
             if(flag !== false) {
+               //NP Loader
+               NProgress.start();
                //Update form
                axios.put(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/11/`, data)
                .then(res => {
                   this.$store.dispatch('UPDATE_FIELD', data);
                   this.$alertify.success('Risk field updated successfully');
+                  NProgress.done();
                })
                .catch(error => (console.log(error)))
             }
