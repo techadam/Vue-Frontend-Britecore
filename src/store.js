@@ -4,6 +4,8 @@ import axios from 'axios'
 
 Vue.use(Vuex);
 
+const url = 'https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev';
+
 export const store = new Vuex.Store({
    state: {
       risks: [],
@@ -59,12 +61,12 @@ export const store = new Vuex.Store({
    },
    actions: {
          GET_RISK : async (context, payload) => {
-            await axios.get('http://127.0.0.1:8000/api/risks/').then(res => {
+            await axios.get(`${url}/api/risks/`).then(res => {
                   context.commit('SET_RISK', res.data);
                }).catch(error => (console.log(error)))
          },
         GET_RISK_FIELDS : async (context, payload) => {
-           await axios.get('http://127.0.0.1:8000/api/risk_fields/').then(res => {
+           await axios.get(`${url}/api/risk_fields/`).then(res => {
               context.commit('SET_RISK_FIELDS', res.data);
            }).catch(error => (console.log(error)))
        },
@@ -78,7 +80,7 @@ export const store = new Vuex.Store({
           context.commit('UPDATE_FIELD', payload)
        },
        GET_FIELD_TYPES : async (context, payload) => {
-          await axios.get('http://127.0.0.1:8000/api/field_types/').then(res => {
+          await axios.get(`${url}/api/field_types/`).then(res => {
              context.commit('SET_FIELD_TYPES', res.data);
           }).catch(error => (console.log(error)))
        },

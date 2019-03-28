@@ -101,7 +101,7 @@
 
             if(flag !== false) {
                //Update form
-               axios.put(`http://127.0.0.1:8000/api/risk_fields/11/`, data)
+               axios.put(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/11/`, data)
                .then(res => {
                   this.$store.dispatch('UPDATE_FIELD', data);
                   this.$alertify.success('Risk field updated successfully');

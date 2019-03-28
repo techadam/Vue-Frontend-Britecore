@@ -45,7 +45,7 @@ export default {
          e.preventDefault();
 
          if(this.risk_name !== '') {
-            axios.post('http://127.0.0.1:8000/api/risks/', {risk_name: this.risk_name})
+            axios.post('https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/', {risk_name: this.risk_name})
             .then(res => {
                if(res.data.id) {
                   //Update main state

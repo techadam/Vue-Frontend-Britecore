@@ -48,7 +48,7 @@ export default {
          e.preventDefault();
 
          if(this.risk_name !== '') {
-            axios.put(`http://127.0.0.1:8000/api/risks/${this.risk.id}/`, this.risk)
+            axios.put(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${this.risk.id}/`, this.risk)
             .then(res => {
                if(res.data.id) {
                   //Update main state
@@ -65,6 +65,9 @@ export default {
             this.$alertify.error('Risk type name is required');
          }
       }
+   },
+   created() {
+      console.log(this.risk)
    }
 }
 

@@ -59,7 +59,7 @@
          },
          deleteRisk(riskId) {
             if(!isNaN(riskId)) {
-               axios.delete(`http://127.0.0.1:8000/api/risks/${riskId}`)
+               axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${riskId}`)
                .then(res => {
                   this.$alertify.success('Risk type successfully deleted');
                   this.$store.dispatch('DELETE_RISK', res.data);

@@ -60,7 +60,7 @@
          * get risk type
          */
          getRiskType(id) {
-            axios.get(`http://127.0.0.1:8000/api/risks/${id}/`)
+            axios.get(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
             .then(res => {
                this.risk = res.data
             })
@@ -71,7 +71,7 @@
          * Remove risk field
          */
          removeField(fieldId) {
-            axios.delete(`http://127.0.0.1:8000/api/risk_fields/${fieldId}/`)
+            axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
             .then(res => {
                this.$store.dispatch('REMOVE_FIELD', res.data);
                this.$alertify.success('Field  removed successfully');
