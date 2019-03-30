@@ -48,7 +48,7 @@ export default {
             //NP Loader
             NProgress.start();
             //Post Request
-            axios.post('https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/', {risk_name: this.risk_name})
+            axios.post('https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/', {risk_name: this.risk_name})
             .then(res => {
                if(res.data.id) {
                   //Update main state

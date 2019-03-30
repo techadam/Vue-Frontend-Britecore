@@ -60,7 +60,7 @@
          * get risk type
          */
          getRiskType(id) {
-            axios.get(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
+            axios.get(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
             .then(res => {
                this.risk = res.data
             })
@@ -74,7 +74,7 @@
             //NP loader
             NProgress.start();
             //Delete Request
-            axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
+            axios.delete(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
             .then(res => {
                this.$store.dispatch('REMOVE_FIELD', res.data);
                this.$alertify.success('Field  removed successfully');

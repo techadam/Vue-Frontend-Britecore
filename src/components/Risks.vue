@@ -27,7 +27,7 @@
                         </td>
                         <td>
                            <router-link class="btn btn-link text-success mr-2" :to="{ name: 'riskdetail', params: { id: risk.id }}" ><i class="fa fa-eye"></i></router-link>
-                           <button class="btn btn-link text-primary mr-2" data-toggle="modal" data-target="#updateModalLong" @click="updateRisk(risk.id)"><i class="far fa-edit"></i></button>
+                           <button class="btn btn-link text-primary mr-2" @click="updateRisk(risk.id)"><i class="far fa-edit"></i></button>
                            <button class="btn btn-link text-danger mr-2" @click="deleteRisk(risk.id)"><i class="fa fa-trash-alt"></i></button>
                         </td>
                      </tr>
@@ -40,7 +40,7 @@
       <!--Add Risk Component -->
       <AddRisk />
 
-      <EditRisk @fetchRisks="fetchRisks" />
+      <EditRisk @fetchRisks="fetchRisks" :isOpen='show' @disableModal="updateShow" ref="editrisk" />
    </div>
 </template>
 
@@ -52,17 +52,30 @@
    export default {
       name: 'Risks',
       components: {AddRisk, EditRisk},
+      data() {
+         return {
+            show: 'popup-close',
+         }
+      },
       methods: {
          updateRisk(riskId) {
-            const riskIndex = this.risks.filter(risk => risk.id === riskId)[0];
-            this.$children[1].risk = riskIndex;
+            //NP Loader
+            NProgress.start();
+            axios.get(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${riskId}/`).then(res => {
+               this.$refs.editrisk.risk = res.data;
+               NProgress.done();
+               this.show = '';
+            }).catch(error => (console.log(error)))
+         },
+         updateShow() {
+            this.show = 'popup-close';
          },
          deleteRisk(riskId) {
             if(!isNaN(riskId)) {
                //NP Loader
                NProgress.start();
                //Delete Request
-               axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${riskId}`)
+               axios.delete(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${riskId}/`)
                .then(res => {
                   this.$alertify.success('Risk type successfully deleted');
                   this.$store.dispatch('DELETE_RISK', res.data);
@@ -79,7 +92,7 @@
          /*
          * Fetch risk types from store
          */
-         this.$store.dispatch('GET_RISK')
+         this.$store.dispatch('GET_RISK');
 
          /*
          * Fetch all risk fields from store

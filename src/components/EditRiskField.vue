@@ -103,7 +103,7 @@
                //NP Loader
                NProgress.start();
                //Update form
-               axios.put(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/11/`, data)
+               axios.put(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/11/`, data)
                .then(res => {
                   this.$store.dispatch('UPDATE_FIELD', data);
                   this.$alertify.success('Risk field updated successfully');
@@ -115,7 +115,7 @@
          }
       },
       mounted() {
-         console.log(this.risk_field)
+
       },
       computed: {
          field_options() {

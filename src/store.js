@@ -4,7 +4,7 @@ import axios from 'axios'
 
 Vue.use(Vuex);
 
-const url = 'https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev';
+const url = 'https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev';
 
 export const store = new Vuex.Store({
    state: {

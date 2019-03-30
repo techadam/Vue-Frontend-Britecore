@@ -85,7 +85,7 @@
             //NP loader
             NProgress.start();
             //Get Request
-            axios.get(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
+            axios.get(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risks/${id}/`)
             .then(res => {
                this.risk = res.data;
                NProgress.done();
@@ -103,7 +103,6 @@
             const field_obj = this.field_types.find(field => (field.id === riskField[0].field_type_id));
             this.$children[1].options_edit = field_obj.type_options_req;
             this.isOpen = '';
-            console.log(this.$children[1].risk_field)
          },
 
          /*
@@ -113,7 +112,7 @@
             //NP loader
             NProgress.start();
             //Delete Request
-            axios.delete(`https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
+            axios.delete(`https://cors-anywhere.herokuapp.com/https://r9ki93pvvd.execute-api.us-west-2.amazonaws.com/dev/api/risk_fields/${fieldId}/`)
             .then(res => {
                this.$store.dispatch('REMOVE_FIELD', res.data);
                this.$alertify.success('Field  removed successfully');
